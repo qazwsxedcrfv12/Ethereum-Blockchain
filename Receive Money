@@ -1,0 +1,19 @@
+pragma solidity ^0.5.13;
+
+contract money {
+  
+      mapping(address => uint) public balancerecieved;
+      
+      function balance() public view returns(uint) {
+          return address(this).balance;                           // check the balance in smart contract
+      }
+      
+      function receivemoney() public payable {
+         balancedrecieved[msg.sender] += msg.value;              // transfer ether to smart contract
+      }
+ }
+      
+      
+         
+         
+      
