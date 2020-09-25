@@ -1,0 +1,51 @@
+pragma solidity ^0.5.13;
+
+contract conditional {
+    
+      uint public age;
+      
+      uint[] public arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      
+      
+      
+      function count_even_no() public view returns(uint) {
+          
+             uint count = 0;
+             
+             for(uint i=0; i<arr.length; i++)
+            {
+                if(arr[i] %2 ==0)
+                   count += 1;
+            }
+            
+            return count;
+              
+             
+      }
+     
+     
+      function setvalue(uint _value) public {
+          
+            age = _value;
+        
+      }
+      
+      function checkvalue() public view returns(uint) {
+          
+            if(age > 10)
+             return 1;
+            
+            else
+             return 0;
+             
+      }
+      
+      function even_no(uint _no) public pure returns(bool) {
+          
+            if(_no % 2 == 0)
+             return true;
+            
+            else
+             return false;
+      }
+} 
