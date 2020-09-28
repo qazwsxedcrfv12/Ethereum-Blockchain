@@ -1,0 +1,52 @@
+pragma solidity ^0.5.13;
+
+contract Hotelroom {
+    
+                 enum Status { Vacant, Occupied }
+      
+      Status currentstatus;
+      
+      
+      event Occupy(address _occupant, uint _value);
+      
+                 address public owner;
+      
+      constructor () public {
+          
+           owner = msg.sender;
+           
+           currentstatus = Status.Vacant;
+           
+      }
+      
+     
+        modifier  onlyvacant {
+            
+                          
+            require(currentstatus == Status.Vacant, "Room is Occupied");
+            _;
+            
+        }
+        
+        
+        modifier cost (uint _amount) {
+            
+                 require(msg.value >= _amount, "Nor enough ether provided");
+                 _;
+            
+        }
+      
+       
+       function recieve() external payable onlyvacant cost(2 ether) {
+         
+           
+             currentstatus = Status.Occupied;
+             
+             
+             // uint btos = msg.value;
+            // owner.transfer(btos);
+             
+             emit Occupy(msg.sender, msg.value);
+       }
+}
+ 
